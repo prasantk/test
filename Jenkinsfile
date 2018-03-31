@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('print') {
             steps {
-                sh "echo ${shortCommit}"
+                sh "echo ${env.shortCommit}"
             }
         }
     }
