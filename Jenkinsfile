@@ -3,7 +3,8 @@ pipeline {
         label 'docker-agent'
     }
     environment {
-        tag = "${env.BUILD_NUMBER}" + "_" + sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+        shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+        tag = "${env.BUILD_NUMBER}_${shortCommit}"
     }
     stages {
         stage('print') {
